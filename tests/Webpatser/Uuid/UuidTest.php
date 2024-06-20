@@ -1,45 +1,45 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Webpatser\Uuid\Uuid;
+use Klongchu\Uuid\Uuid;
 
 class UuidTest extends TestCase
 {
     public function testStaticGeneration()
     {
         $uuid = Uuid::generate(1);
-        $this->assertInstanceOf('Webpatser\Uuid\Uuid', $uuid);
+        $this->assertInstanceOf('Klongchu\Uuid\Uuid', $uuid);
 
         $uuid = Uuid::generate(3, 'example.com', Uuid::NS_DNS);
-        $this->assertInstanceOf('Webpatser\Uuid\Uuid', $uuid);
+        $this->assertInstanceOf('Klongchu\Uuid\Uuid', $uuid);
 
         $uuid = Uuid::generate(4);
-        $this->assertInstanceOf('Webpatser\Uuid\Uuid', $uuid);
+        $this->assertInstanceOf('Klongchu\Uuid\Uuid', $uuid);
 
         $uuid = Uuid::generate(5, 'example.com', Uuid::NS_DNS);
-        $this->assertInstanceOf('Webpatser\Uuid\Uuid', $uuid);
+        $this->assertInstanceOf('Klongchu\Uuid\Uuid', $uuid);
     }
 
     public function testImportAllZeroUuid()
     {
         $uuid = Uuid::import('00000000-0000-0000-0000-000000000000');
-        $this->assertInstanceOf('Webpatser\Uuid\Uuid', $uuid);
+        $this->assertInstanceOf('Klongchu\Uuid\Uuid', $uuid);
         $this->assertEquals('00000000-0000-0000-0000-000000000000', (string) $uuid);
     }
 
     public function testGenerationOfValidUuidViaRegex()
     {
         $uuid = Uuid::generate(1);
-        $this->assertMatchesRegularExpression('~' . Uuid::VALID_UUID_REGEX . '~', (string)$uuid);
+        $this->assertMatchesRegularExpression('~' . Uuid::VALID_UUID_REGEX . '~', (string) $uuid);
 
         $uuid = Uuid::generate(3, 'example.com', Uuid::NS_DNS);
-        $this->assertMatchesRegularExpression('~' . Uuid::VALID_UUID_REGEX . '~', (string)$uuid);
+        $this->assertMatchesRegularExpression('~' . Uuid::VALID_UUID_REGEX . '~', (string) $uuid);
 
         $uuid = Uuid::generate(4);
-        $this->assertMatchesRegularExpression('~' . Uuid::VALID_UUID_REGEX . '~', (string)$uuid);
+        $this->assertMatchesRegularExpression('~' . Uuid::VALID_UUID_REGEX . '~', (string) $uuid);
 
         $uuid = Uuid::generate(5, 'example.com', Uuid::NS_DNS);
-        $this->assertMatchesRegularExpression('~' . Uuid::VALID_UUID_REGEX . '~', (string)$uuid);
+        $this->assertMatchesRegularExpression('~' . Uuid::VALID_UUID_REGEX . '~', (string) $uuid);
     }
 
     public function testGenerationOfValidUuidViaValidator()
@@ -122,19 +122,19 @@ class UuidTest extends TestCase
     public function testCorrectVersionOfImportedUuid()
     {
         $uuidOne = Uuid::generate(1);
-        $importedOne = Uuid::import((string)$uuidOne);
+        $importedOne = Uuid::import((string) $uuidOne);
         $this->assertEquals($uuidOne->version, $importedOne->version);
 
         $uuidThree = Uuid::generate(3, 'example.com', Uuid::NS_DNS);
-        $importedThree = Uuid::import((string)$uuidThree);
+        $importedThree = Uuid::import((string) $uuidThree);
         $this->assertEquals($uuidThree->version, $importedThree->version);
 
         $uuidFour = Uuid::generate(4);
-        $importedFour = Uuid::import((string)$uuidFour);
+        $importedFour = Uuid::import((string) $uuidFour);
         $this->assertEquals($uuidFour->version, $importedFour->version);
 
         $uuidFive = Uuid::generate(5, 'example.com', Uuid::NS_DNS);
-        $importedFive = Uuid::import((string)$uuidFive);
+        $importedFive = Uuid::import((string) $uuidFive);
         $this->assertEquals($uuidFive->version, $importedFive->version);
     }
 
@@ -157,26 +157,26 @@ class UuidTest extends TestCase
     public function testCorrectTimeOfImportedUuid()
     {
         $uuidOne = Uuid::generate(1);
-        $importedOne = Uuid::import((string)$uuidOne);
+        $importedOne = Uuid::import((string) $uuidOne);
         $this->assertEquals($uuidOne->time, $importedOne->time);
 
         $uuidThree = Uuid::generate(3, 'example.com', Uuid::NS_DNS);
-        $importedThree = Uuid::import((string)$uuidThree);
+        $importedThree = Uuid::import((string) $uuidThree);
         $this->assertEmpty($importedThree->time);
 
         $uuidFour = Uuid::generate(4);
-        $importedFour = Uuid::import((string)$uuidFour);
+        $importedFour = Uuid::import((string) $uuidFour);
         $this->assertEmpty($importedFour->time);
 
         $uuidFive = Uuid::generate(5, 'example.com', Uuid::NS_DNS);
-        $importedFive = Uuid::import((string)$uuidFive);
+        $importedFive = Uuid::import((string) $uuidFive);
         $this->assertEmpty($importedFive->time);
     }
 
     public function testUuidCompare()
     {
-        $uuid1 = (string)Uuid::generate(1);
-        $uuid2 = (string)Uuid::generate(1);
+        $uuid1 = (string) Uuid::generate(1);
+        $uuid2 = (string) Uuid::generate(1);
 
         $this->assertTrue(Uuid::compare($uuid1, $uuid1));
         $this->assertFalse(Uuid::compare($uuid1, $uuid2));

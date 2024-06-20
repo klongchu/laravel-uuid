@@ -1,6 +1,6 @@
 <?php
 
-namespace Webpatser\Uuid;
+namespace Klongchu\Uuid;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
@@ -18,7 +18,7 @@ class UuidServiceProvider extends ServiceProvider
             return Uuid::validate($value);
         });
     }
-    
+
     /**
      * Register the service provider.
      *

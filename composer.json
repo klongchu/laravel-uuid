@@ -1,5 +1,5 @@
 {
-	"name" : "flynowpaylater/laravel-uuid",
+	"name" : "klongchu/laravel-uuid",
 	"description" : "Laravel package to generate and to validate a universally unique identifier (UUID) according to the RFC 4122 standard. Support for version 1, 3, 4 and 5 UUIDs are built-in.",
 	"authors" : [{
 			"name" : "Christoph Kempen",
@@ -9,12 +9,12 @@
 	"keywords" : [
 		"UUID RFC4122"
 	],
-	"homepage" : "https://github.com/webpatser/laravel-uuid",
+	"homepage" : "https://github.com/klongchu/laravel-uuid",
 	"license" : [
 		"MIT"
 	],
 	"require" : {
-		"php" : "^7.0|^8.0"
+		"php" : "^7.0|^8.0|^8.1|^8.2"
 	},
     "require-dev" : {
 		"fakerphp/faker": "^1.9.1",
@@ -22,7 +22,7 @@
     },
 	"autoload" : {
 		"psr-4" : {
-			"Webpatser\\Uuid\\": "src/Webpatser/Uuid/"
+			"Klongchu\\Uuid\\": "src/Klongchu/Uuid/"
 		}
 	},
 	"autoload-dev": {
@@ -31,16 +31,16 @@
 		}
 	},
 	"support" : {
-		"source" : "https://github.com/webpatser/laravel-uuid",
-		"issues" : "https://github.com/webpatser/laravel-uuid/issues"
+		"source" : "https://github.com/klongchu/laravel-uuid",
+		"issues" : "https://github.com/klongchu/laravel-uuid/issues"
 	},
     "extra": {
         "laravel": {
 			"providers": [
-				"Webpatser\\Uuid\\UuidServiceProvider"
+				"Klongchu\\Uuid\\UuidServiceProvider"
 			],
             "aliases": {
-                "Uuid": "Webpatser\\Uuid\\Uuid"
+                "Uuid": "Klongchu\\Uuid\\Uuid"
             }
         }
     }
